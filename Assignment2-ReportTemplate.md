@@ -5,7 +5,7 @@
 | Group \#:      |     |
 | -------------- | --- |
 | Student Names: |     |
-|                |     |
+| Graydon Hall   | 30142310 |
 |                |     |
 |                |     |
 
@@ -39,6 +39,14 @@ This method has a special handling to ignore Double.NaN values.
   * To test all cases exhaustively would be 2^4=16  tests 
   * Instead we take a weak approach, and test each affect independently 
 
+Method: `expandToInclude()`
+* The purpose of this method: It returns a range that includes all the values in the 
+specified range AND the specified value 
+* To test this, we start with a valid range between -1 and 1
+* We test 2 cases: expanding the range up and down
+* For each of these cases, we define partitions, and apply boundary value testing as follows<br>
+![](images/expandToIncludeRangeImage.png)<br>
+
 # 3 Test cases developed
 
 ### Classes for testing methods of DataUtilities class
@@ -51,10 +59,27 @@ Class: `createNumberArrayTest`
   * `testEmptyArraysDifferentLength()`: ensures empty array created does not have the wrong length
   * `testLargeValues()`: ensures correct behavior when extremely large values are used
 
-### Classes for testing methods of DataUtilities class
+### Classes for testing methods of Range class
 Class: `CombineIgnoringNaNTest`
 * This class corresponds to the `CombineIgnoringNaN()` method
-* The following 
+* methods: 
+  * `testNoNaNs()`: test combined range with no NaNs present
+  * `testR1LbNaN()`: test combined range with range 1 lower bound NaN
+  * `testR1UbNaN()`: test combined range with range 1 upper bound NaN
+  * `testR2LbNaN()`: test combined range with range 2 lower bound NaN
+  * `testR2UbNaN()`: test combined range with range 2 u bound NaN
+
+Class: `ExpandToIncludeTest`
+* This class corresponds to the `expandToInclude()` method
+* Methods: 
+  * `expandUpNominal()`: expand range up, test nominal value
+  * `expandUpBUB()`: expand range up, test below upper bound
+  * `expandUpUB()`: expand range up, test Upper Bound
+  * `expandUpAUB()`: expand range up, test above upper bound
+  * `expandDownNominal()`: expand range down, test nominal value
+  * `expandDownALB()`: expand range down, test Above lower bound
+  * `expandDownLB()`: expand range down, test lower bound
+  * `expandDownBLB()`: expand range down, test below lower bound
 
 # 4 How the team work/effort was divided and managed
 
